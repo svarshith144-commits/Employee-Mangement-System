@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: employee-management-system
+  datasource:
+    url: jdbc:h2:mem:hrmsdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: 9a2f8c4e7b1d3a5f8c6e4b2a0d9e8f7c6b5a4d3e2f1a0c9b8a7f6e5d4c3b2a1
+  expiration-ms: 86400000 # 24 Hours
+
+cloudinary:
+  cloud-name: demo
+  api-key: 123456789
+  api-secret: demo-secret
