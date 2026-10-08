@@ -15,7 +15,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header({ onOpenQRScanner }) {
-  const { currentUser, switchRole, notifications, markNotificationRead, markAllNotificationsRead } = useStore();
+  const { currentUser, switchRole, notifications, markNotificationRead, markAllNotificationsRead, logout } = useStore();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
   const navigate = useNavigate();
@@ -27,6 +27,11 @@ export default function Header({ onOpenQRScanner }) {
     MANAGER: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
     HR: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
     ADMIN: 'bg-rose-500/10 text-rose-400 border-rose-500/30'
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -170,6 +175,16 @@ export default function Header({ onOpenQRScanner }) {
             <div className="text-[10px] text-slate-400">{currentUser.designation}</div>
           </div>
         </Link>
+
+        {/* Log Out Button */}
+        <button
+          onClick={handleLogout}
+          className="p-2 text-rose-400 hover:bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs font-semibold transition-all flex items-center gap-1 ml-1"
+          title="Sign Out of Platform"
+        >
+          <LogOut className="w-4 h-4" />
+          <span className="hidden xl:inline">Logout</span>
+        </button>
       </div>
     </header>
   );

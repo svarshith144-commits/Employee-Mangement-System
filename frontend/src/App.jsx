@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -26,28 +27,31 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Navigate to="/dashboard" replace />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="employees" element={<Employees />} />
-        <Route path="employees/:id" element={<EmployeeDetails />} />
-        <Route path="attendance" element={<Attendance />} />
-        <Route path="attendance/scan" element={<QRScanPage />} />
-        <Route path="leave" element={<Leave />} />
-        <Route path="tasks" element={<Tasks />} />
-        <Route path="performance" element={<Performance />} />
-        <Route path="payroll" element={<Payroll />} />
-        <Route path="documents" element={<Documents />} />
-        <Route path="announcements" element={<Announcements />} />
-        <Route path="calendar" element={<CalendarPage />} />
-        <Route path="departments" element={<Departments />} />
-        <Route path="reports" element={<Reports />} />
-        <Route path="hr" element={<HRDashboard />} />
-        <Route path="admin" element={<AdminDashboard />} />
-        <Route path="profile" element={<Profile />} />
+      {/* Protected Application Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<DashboardLayout />}>
+          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="employees" element={<Employees />} />
+          <Route path="employees/:id" element={<EmployeeDetails />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="attendance/scan" element={<QRScanPage />} />
+          <Route path="leave" element={<Leave />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="performance" element={<Performance />} />
+          <Route path="payroll" element={<Payroll />} />
+          <Route path="documents" element={<Documents />} />
+          <Route path="announcements" element={<Announcements />} />
+          <Route path="calendar" element={<CalendarPage />} />
+          <Route path="departments" element={<Departments />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="hr" element={<HRDashboard />} />
+          <Route path="admin" element={<AdminDashboard />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
       </Route>
 
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }

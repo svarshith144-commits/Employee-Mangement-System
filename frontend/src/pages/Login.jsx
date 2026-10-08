@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore, PRESET_USERS } from '../store/useStore';
 import { Sparkles, Shield, Lock, ArrowRight, UserCheck } from 'lucide-react';
 
 export default function Login() {
-  const { switchRole } = useStore();
+  const { isAuthenticated, login } = useStore();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('revanth.k@enterprise.com');
   const [password, setPassword] = useState('••••••••••••');
   const [selectedPresetRole, setSelectedPresetRole] = useState('EMPLOYEE');
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    switchRole(selectedPresetRole);
-    navigate('/dashboard');
+    login(selectedPresetRole);
+    navigate('/dashboard', { replace: true });
   };
 
   return (
@@ -37,7 +43,7 @@ export default function Login() {
         {/* Quick Role Simulator Tabs */}
         <div className="p-3 bg-slate-950 rounded-2xl border border-slate-800/80 space-y-2">
           <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block text-center">
-            Select Preset Persona & Role:
+            Select Role to Login As:
           </span>
           <div className="grid grid-cols-2 gap-2">
             {Object.keys(PRESET_USERS).map(roleKey => {
@@ -93,7 +99,7 @@ export default function Login() {
             type="submit"
             className="w-full py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-600/30"
           >
-            Authenticate with JWT <ArrowRight className="w-4 h-4" />
+            Authenticate & Sign In <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 

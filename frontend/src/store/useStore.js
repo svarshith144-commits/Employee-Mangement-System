@@ -484,7 +484,16 @@ const MOCK_HOLIDAYS = [
 ];
 
 export const useStore = create((set, get) => ({
-  currentUser: PRESET_USERS.EMPLOYEE,
+  isAuthenticated: Boolean(localStorage.getItem('ems_token')),
+  token: localStorage.getItem('ems_token') || null,
+  currentUser: (() => {
+    try {
+      const saved = localStorage.getItem('ems_user');
+      return saved ? JSON.parse(saved) : PRESET_USERS.EMPLOYEE;
+    } catch (e) {
+      return PRESET_USERS.EMPLOYEE;
+    }
+  })(),
   employees: MOCK_EMPLOYEES,
   departments: MOCK_DEPARTMENTS,
   attendance: MOCK_ATTENDANCE,
@@ -498,10 +507,36 @@ export const useStore = create((set, get) => ({
   notifications: MOCK_NOTIFICATIONS,
   holidays: MOCK_HOLIDAYS,
 
+  // Login Action
+  login: (roleKey = 'EMPLOYEE') => {
+    const targetUser = PRESET_USERS[roleKey] || PRESET_USERS.EMPLOYEE;
+    const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.${btoa(JSON.stringify({ sub: targetUser.email, role: targetUser.role }))}.mock_sig`;
+    localStorage.setItem('ems_token', token);
+    localStorage.setItem('ems_user', JSON.stringify(targetUser));
+    set({
+      isAuthenticated: true,
+      token,
+      currentUser: targetUser
+    });
+    return { success: true, user: targetUser };
+  },
+
+  // Logout Action
+  logout: () => {
+    localStorage.removeItem('ems_token');
+    localStorage.removeItem('ems_user');
+    set({
+      isAuthenticated: false,
+      token: null
+    });
+  },
+
   // Role Switcher Action
   switchRole: (roleKey) => {
     if (PRESET_USERS[roleKey]) {
-      set({ currentUser: PRESET_USERS[roleKey] });
+      const targetUser = PRESET_USERS[roleKey];
+      localStorage.setItem('ems_user', JSON.stringify(targetUser));
+      set({ currentUser: targetUser });
     }
   },
 
