@@ -27,7 +27,7 @@ public class DataInitializer implements CommandLineRunner {
         if (userRepository.count() == 0) {
             // Seed Employee
             User empUser = User.builder()
-                    .email("revanth.k@enterprise.com")
+                    .email("varshith.k@enterprise.com")
                     .password(passwordEncoder.encode("password"))
                     .role(Role.EMPLOYEE)
                     .build();
@@ -35,8 +35,8 @@ public class DataInitializer implements CommandLineRunner {
 
             Employee emp = Employee.builder()
                     .id("EMP-1024")
-                    .name("Revanth Kumar")
-                    .email("revanth.k@enterprise.com")
+                    .name("Varshith Kumar")
+                    .email("varshith.k@enterprise.com")
                     .department("Engineering")
                     .designation("Senior Software Developer")
                     .joiningDate(LocalDate.of(2023, 3, 15))

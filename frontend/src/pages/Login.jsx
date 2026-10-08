@@ -7,7 +7,7 @@ export default function Login() {
   const { isAuthenticated, login } = useStore();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('revanth.k@enterprise.com');
+  const [email, setEmail] = useState('varshith.k@enterprise.com');
   const [password, setPassword] = useState('••••••••••••');
   const [selectedPresetRole, setSelectedPresetRole] = useState('EMPLOYEE');
 

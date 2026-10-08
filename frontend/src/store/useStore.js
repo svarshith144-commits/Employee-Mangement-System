@@ -4,8 +4,8 @@ import { create } from 'zustand';
 export const PRESET_USERS = {
   EMPLOYEE: {
     id: 'EMP-1024',
-    name: 'Revanth Kumar',
-    email: 'revanth.k@enterprise.com',
+    name: 'Varshith Kumar',
+    email: 'varshith.k@enterprise.com',
     role: 'EMPLOYEE',
     department: 'Engineering',
     designation: 'Senior Software Developer',
@@ -68,8 +68,8 @@ const MOCK_EMPLOYEES = [
   {
     id: 'EMP-1024',
     employeeId: 'EMP-1024',
-    name: 'Revanth Kumar',
-    email: 'revanth.k@enterprise.com',
+    name: 'Varshith Kumar',
+    email: 'varshith.k@enterprise.com',
     role: 'EMPLOYEE',
     department: 'Engineering',
     designation: 'Senior Software Developer',
@@ -247,7 +247,7 @@ const MOCK_LEAVE_REQUESTS = [
   {
     id: 'LV-901',
     employeeId: 'EMP-1024',
-    employeeName: 'Revanth Kumar',
+    employeeName: 'Varshith Kumar',
     department: 'Engineering',
     leaveType: 'CASUAL',
     startDate: '2026-10-12',
@@ -262,7 +262,7 @@ const MOCK_LEAVE_REQUESTS = [
   {
     id: 'LV-900',
     employeeId: 'EMP-1024',
-    employeeName: 'Revanth Kumar',
+    employeeName: 'Varshith Kumar',
     department: 'Engineering',
     leaveType: 'SICK',
     startDate: '2026-09-18',
@@ -297,7 +297,7 @@ const MOCK_TASKS = [
     title: 'Develop Spring Security JWT & OAuth Auth Endpoints',
     description: 'Implement JWT authentication filter, refreshes, token validation, and RBAC endpoint guards in Spring Boot.',
     assignedToId: 'EMP-1024',
-    assignedToName: 'Revanth Kumar',
+    assignedToName: 'Varshith Kumar',
     assignedById: 'MGR-2001',
     assignedByName: 'Sarah Jenkins',
     priority: 'HIGH',
@@ -311,7 +311,7 @@ const MOCK_TASKS = [
     title: 'Design QR Scanner and Realtime STOMP Notification Client',
     description: 'Create responsive QR camera scanner component using html5-qrcode and connect to WebSocket STOMP notification topic.',
     assignedToId: 'EMP-1024',
-    assignedToName: 'Revanth Kumar',
+    assignedToName: 'Varshith Kumar',
     assignedById: 'MGR-2001',
     assignedByName: 'Sarah Jenkins',
     priority: 'URGENT',
@@ -367,7 +367,7 @@ const MOCK_TASKS = [
 const MOCK_PERFORMANCE = {
   'EMP-1024': {
     employeeId: 'EMP-1024',
-    employeeName: 'Revanth Kumar',
+    employeeName: 'Varshith Kumar',
     period: 'Q3 2026 Performance Review',
     overallScore: 87,
     ratings: {
@@ -382,7 +382,7 @@ const MOCK_PERFORMANCE = {
       { id: 2, title: 'Maintain 95%+ Unit Test Code Coverage', status: 'IN_PROGRESS', progress: 85 },
       { id: 3, title: 'Mentor 2 Junior Frontend Interns', status: 'COMPLETED', progress: 100 }
     ],
-    managerFeedback: 'Revanth consistently demonstrates outstanding technical competence and clean architecture design. His work on the real-time notification subsystem exceeded team expectations.',
+    managerFeedback: 'Varshith consistently demonstrates outstanding technical competence and clean architecture design. His work on the real-time notification subsystem exceeded team expectations.',
     selfReview: 'Delivered core microservices on time with high code quality. Focused on improving automated testing and cross-team communication.'
   }
 };
@@ -391,7 +391,7 @@ const MOCK_PAYROLL = [
   {
     id: 'PAY-2026-10',
     employeeId: 'EMP-1024',
-    employeeName: 'Revanth Kumar',
+    employeeName: 'Varshith Kumar',
     designation: 'Senior Software Developer',
     department: 'Engineering',
     month: 'October',
@@ -410,7 +410,7 @@ const MOCK_PAYROLL = [
   {
     id: 'PAY-2026-09',
     employeeId: 'EMP-1024',
-    employeeName: 'Revanth Kumar',
+    employeeName: 'Varshith Kumar',
     designation: 'Senior Software Developer',
     department: 'Engineering',
     month: 'September',
@@ -472,7 +472,7 @@ const MOCK_NOTIFICATIONS = [
   { id: 'NOT-1', userId: 'EMP-1024', title: 'Leave Application Pending', message: 'Your leave request for 12 Oct - 14 Oct is under review by Sarah Jenkins.', date: '10 mins ago', read: false, type: 'LEAVE', link: '/leave' },
   { id: 'NOT-2', userId: 'EMP-1024', title: 'New Task Assigned', message: 'You have been assigned: Develop Spring Security JWT Endpoints.', date: '1 hour ago', read: false, type: 'TASK', link: '/tasks' },
   { id: 'NOT-3', userId: 'EMP-1024', title: 'October Payslip Available', message: 'Your payslip for October 2026 is ready to download.', date: '1 day ago', read: true, type: 'PAYROLL', link: '/payroll' },
-  { id: 'NOT-4', userId: 'MGR-2001', title: 'New Leave Request', message: 'Revanth Kumar applied for 3 days Casual Leave.', date: '2 hours ago', read: false, type: 'LEAVE', link: '/leave' }
+  { id: 'NOT-4', userId: 'MGR-2001', title: 'New Leave Request', message: 'Varshith Kumar applied for 3 days Casual Leave.', date: '2 hours ago', read: false, type: 'LEAVE', link: '/leave' }
 ];
 
 const MOCK_HOLIDAYS = [

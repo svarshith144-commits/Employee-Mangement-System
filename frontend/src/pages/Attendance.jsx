@@ -170,7 +170,7 @@ export default function Attendance() {
             </thead>
             <tbody className="divide-y divide-slate-800/60">
               {(isManagerOrHr ? attendance : userAtt).map(a => {
-                const emp = employees.find(e => e.id === a.employeeId) || { name: 'Revanth Kumar', employeeId: a.employeeId, avatar: currentUser.avatar };
+                const emp = employees.find(e => e.id === a.employeeId) || { name: 'Varshith Kumar', employeeId: a.employeeId, avatar: currentUser.avatar };
                 return (
                   <tr key={a.id} className="hover:bg-slate-800/40 transition-colors">
                     <td className="p-3 flex items-center gap-3">
